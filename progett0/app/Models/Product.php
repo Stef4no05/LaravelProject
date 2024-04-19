@@ -67,8 +67,15 @@ class Product extends Model
     public function items(): HasMany{
         return $this->hasMany(Item::class);
     }
-    public function gerItems(){
+    public function getItems(){
         return $this->items;
+    }
+
+    public function reviews(): HasMany{
+        return $this->hasMany(Review::class);
+    }
+    public function getReview(){
+        return $this->review;
     }
     
 }
