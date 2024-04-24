@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,8 +22,8 @@ class ProductController extends Controller
 
         $viewData["title"] = "Prodotti - Online Store";
         $viewData["subtitle"] = "Lista prodotti";
-        $viewData["products"] = Product::where('availability',1)->get();
-        
+        $viewData["products"] = Product::where('availability',1)->get();        
+
         return view('product.index')->with("viewData",$viewData);
 
     }
