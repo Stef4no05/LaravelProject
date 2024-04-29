@@ -38,6 +38,21 @@
         </div>
     </div>
 </div>  
+<h2 style="text-align:center"> Recensioni del prodotto </h2> 
 
-    
+@foreach($viewData["reviews"] as $review)
+<br>
+<div class = "card">
+    <div class="card-header">
+        <h5 class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getUser()->getEmail()}}</small></p>
+    </div>
+            
+    <div class="card-body">
+        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Rating:</b> {{$review->getRating()}}/5⭐</small></p>
+        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Data:</b> {{$review->getCreatedAt()}}</small></p>
+        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Descrizione:</b> {{$review->getComment()}}</small></p> 
+    </div> 
+</div>  
+@endforeach
+
 @endsection

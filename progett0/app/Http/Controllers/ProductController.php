@@ -22,7 +22,7 @@ class ProductController extends Controller
 
         $viewData["title"] = "Prodotti - Online Store";
         $viewData["subtitle"] = "Lista prodotti";
-        $viewData["products"] = Product::where('availability',1)->get();        
+        $viewData["products"] = Product::where('availability',1)->get();   
 
         return view('product.index')->with("viewData",$viewData);
 
@@ -37,6 +37,7 @@ class ProductController extends Controller
         $viewData["title"] = $product['name']. " - Online Store";
         $viewData["subtitle"] = "Descrizione prodotto";
         $viewData["product"] = $product;
+        $viewData["reviews"]= Review::where('product_id',$product->getId())->get();     
         
         return view('product.show')->with("viewData",$viewData);
     }
