@@ -24,6 +24,9 @@ class Review extends Model
     public function getUpdateAt(){
         return $this->attributes['updated_at'];
     }
+    public function getTitle(){
+        return $this->attributes["title"];
+    }
    
     public function setId($id){
         $this->attributes["id"] = $id;
@@ -39,6 +42,9 @@ class Review extends Model
     }
     public function setUpdateAt($updateAt){
         $this->attributes["updateAt"] = $updateAt;
+    }
+    public function setTitle($id){
+        $this->attributes["title"] = $id;
     }
 
     public function product(): BelongsTo{

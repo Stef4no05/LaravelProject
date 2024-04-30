@@ -37,20 +37,29 @@
             </div> 
         </div>
     </div>
-</div>  
-<h2 style="text-align:center"> Recensioni del prodotto </h2> 
+</div>
 
+<h2 style="text-align:center"> Recensioni del prodotto </h2>
+<!---COPIARE ROUTE SOPRA-->
+<form method = "POST" action="*">
+    <div class="row" style="text-align:right">
+        @csrf
+        <div class = "col">
+            <button class = "btn bg-secondary text-white" type = "submit">Scrivi una recensione</button>
+        </div>
+    </div>
+</form>
 @foreach($viewData["reviews"] as $review)
 <br>
 <div class = "card">
     <div class="card-header">
-        <h5 class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getUser()->getEmail()}}</small></p>
+        <h5 class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getUser()->getName()}}</small>
+        <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getRating()}}/5⭐</small> <b><small class="text-muted"> {{$review->getTitle()}}</small></b>
     </div>
             
     <div class="card-body">
-        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Rating:</b> {{$review->getRating()}}/5⭐</small></p>
-        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Data:</b> {{$review->getCreatedAt()}}</small></p>
-        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Descrizione:</b> {{$review->getComment()}}</small></p> 
+        <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getComment()}}</small></p> 
+        <p class="card-text" style="text-align:left"><small class="text-muted"><b>{{$review->getCreatedAt()}}</b></small></p>
     </div> 
 </div>  
 @endforeach
