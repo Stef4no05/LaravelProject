@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\Input;
 
 class ReviewController extends Controller
 {
-    public function showCreateForm($id)
+    public function create($id)
     {
         // Trova il prodotto associato all'ID
         $product = Product::findOrFail($id);
 
-        // Passa il prodotto alla vista
-        return view('review.create', ['product' => $product]);
+        $viewData = [];
+        $viewData['title'] = 'Scrivi una recensione';
+        $viewData['subtitle'] = 'Scrivi una recensione per il '.$product->getName();
+        $viewData['product'] = $product;
+
+        return view('review.create')->with("viewData", $viewData);
     }
 
     public function store(Request $request,$id){
