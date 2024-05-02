@@ -46,6 +46,12 @@ class Review extends Model
     public function setTitle($id){
         $this->attributes["title"] = $id;
     }
+    public function setUserId($userId){
+        $this->attributes["user_id"] = $userId;
+    }
+    public function setProductId($userId){
+        $this->attributes["product_id"] = $userId;
+    }
 
     public function product(): BelongsTo{
         return $this->belongsTo(Product::class);

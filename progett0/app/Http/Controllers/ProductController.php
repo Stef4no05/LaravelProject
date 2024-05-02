@@ -37,7 +37,7 @@ class ProductController extends Controller
         $viewData["title"] = $product['name']. " - Online Store";
         $viewData["subtitle"] = "Descrizione prodotto";
         $viewData["product"] = $product;
-        $viewData["reviews"]= Review::where('product_id',$product->getId())->get();     
+        $viewData["reviews"]= Review::where('product_id',$product->getId())->orderBy('created_at', 'desc')->get();     
         
         return view('product.show')->with("viewData",$viewData);
     }
