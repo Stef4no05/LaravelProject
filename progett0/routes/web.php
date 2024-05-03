@@ -54,8 +54,11 @@ Route::middleware('auth')->group(function(){
     Route::get('orders','App\Http\Controllers\MyAccountController@orders')->name("myaccount.orders");
     Route::get('balance','App\Http\Controllers\MyAccountController@balance')->name("myaccount.balance");
     Route::post('/updateBalance', 'App\Http\Controllers\MyAccountController@updateBalance')->name("myaccount.updateBalance");
+    Route::get('/review','App\Http\Controllers\ReviewController@index')->name("review.index");
     Route::get('/review/create/{id}', 'App\Http\Controllers\ReviewController@create')->name('review.create');
     Route::post('/review/store/{id}', 'App\Http\Controllers\ReviewController@store')->name('review.store');
-
+    Route::get('/review/{id}/edit','App\Http\Controllers\ReviewController@edit')->name("review.edit");
+    Route::put('/review/{id}/update', 'App\Http\Controllers\ReviewController@update')->name("review.update");
+    Route::delete('/review/{id}/delete','App\Http\Controllers\ReviewController@delete')->name("review.delete");
 });
 

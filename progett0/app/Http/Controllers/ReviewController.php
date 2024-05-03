@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\Input;
 
 class ReviewController extends Controller
 {
+    
+    public function index() {
+        $viewData = [];
+        $user_id = Auth::user()->getId();
+
+        $viewData['title'] = "Le tue recensioni";
+        $viewData['subtitle'] = "Le tue recensioni";
+        $viewData ['reviews'] = Review::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+        
+        return view('review.index')->with('viewData', $viewData);
+    }
+    
     public function create($id)
     {
         // Trova il prodotto associato all'ID
@@ -30,25 +42,55 @@ class ReviewController extends Controller
             "rating" => "required",
             "comment" => "required",
         ]);
+
+        $review = new Review();
+        $product = Product::findOrFail($id);
+        $user_id= Auth::user()->getId();
+        
+        $review->setTitle($request->input('title'));
+        $review->setComment($request->input('comment'));
+        $review->setRating($request->input('rating'));
+        $review->setUserId($user_id);
+        $review->setProductId($product->getId());
+
+        $review->save();
+
+        $viewData['title'] = 'Carrello - online store';
+        $viewData['subtitle'] = 'Prodotti nel carrello';
+
+        return redirect()->route('product.show', ['id' => $product->getId()]);
+    }
+
+    public function delete($id){
+        Review::destroy($id);
+        return back();
+    }
+
+    //funzione per leggere la recensione che si vuole modificare
+    public function edit($id){
+        $review = Review::findOrFail($id);
+        $viewData = [];
+        $viewData['title'] = 'Modifica recensione';
+        $viewData['subtitle'] = 'Modifica la recensione';
+        $viewData['review'] = $review;
+
+        return view('review.edit')->with("viewData" , $viewData);
+    }
+
+    public function update(Request $request, $id){
+        $request -> validate([
+            "title" => "required|max:255",
+            "rating" => "required",
+            "comment" => "required",
+        ]);
     
+        $review = Review::findOrFail($id);
+        
+        $review->setTitle($request->input('title'));
+        $review->setComment($request->input('comment'));
+        $review->setRating($request->input('rating'));
+        $review->save();
 
-    $review = new Review();
-    $product = Product::findOrFail($id);
-    $user_id= Auth::user()->getId();
-    
-    $review->setTitle($request->input('title'));
-    $review->setComment($request->input('comment'));
-    $review->setRating($request->input('rating'));
-    $review->setUserId($user_id);
-    $review->setProductId($product->getId());
-
-    $review->save();
-
-    $viewData['title'] = 'Carrello - online store';
-    $viewData['subtitle'] = 'Prodotti nel carrello';
-
-    return redirect()->route('product.show', ['id' => $product->getId()]);
-
-
+        return redirect()->route('product.show', ['id' => $product->getId()]);
     }
 }

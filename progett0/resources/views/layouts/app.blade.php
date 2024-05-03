@@ -26,6 +26,7 @@
                 <a class ="nav-link active" href="{{route('product.index')}}">Prodotti</a>
                 <a class ="nav-link active" href="{{route('cart.index')}}">Carrello</a>
                 <a class ="nav-link active" href="{{route('myaccount.orders')}}">Ordini</a>
+                <a class ="nav-link active" href="{{route('review.index')}}">Recensioni</a>
                 
                  <!-- <i class ="bi bi-cart" ></i>-->
                 
