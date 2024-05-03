@@ -17,7 +17,7 @@ class ReviewController extends Controller
 
         $viewData['title'] = "Le tue recensioni";
         $viewData['subtitle'] = "Le tue recensioni";
-        $viewData ['reviews'] = Review::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
+        $viewData ['reviews'] = Review::where('user_id', $user_id)->orderBy('updated_at', 'desc')->get();
         
         return view('review.index')->with('viewData', $viewData);
     }
@@ -55,9 +55,6 @@ class ReviewController extends Controller
 
         $review->save();
 
-        $viewData['title'] = 'Carrello - online store';
-        $viewData['subtitle'] = 'Prodotti nel carrello';
-
         return redirect()->route('product.show', ['id' => $product->getId()]);
     }
 
@@ -71,7 +68,7 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $viewData = [];
         $viewData['title'] = 'Modifica recensione';
-        $viewData['subtitle'] = 'Modifica la recensione';
+        $viewData['subtitle'] = 'Modifica la tua recensione';
         $viewData['review'] = $review;
 
         return view('review.edit')->with("viewData" , $viewData);
@@ -91,6 +88,6 @@ class ReviewController extends Controller
         $review->setRating($request->input('rating'));
         $review->save();
 
-        return redirect()->route('product.show', ['id' => $product->getId()]);
+        return redirect()->route('review.index');
     }
 }

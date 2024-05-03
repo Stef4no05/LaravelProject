@@ -13,10 +13,10 @@
             
     <div class="card-body">
         <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getComment()}}</small></p> 
-        <p class="card-text" style="text-align:left"><small class="text-muted"><b>{{$review->getCreatedAt()}}</b></small></p>
+        <p class="card-text" style="text-align:left"><small class="text-muted"><b>Ultima modifica: </b>{{$review->getUpdatedAt()}}</small></p>
         <div class="row justify-content-end">
             <div class = "col-auto">
-                <form method = "POST" action="{{route('review.edit', ['id' => $review->getId()]) }}">
+                <form method = "GET" action="{{route('review.edit', ['id' => $review->getId()]) }}">
                     @csrf
                     <button class = "btn bg-secondary text-white" type = "submit">Modifica</button>
                 </form>

@@ -21,7 +21,7 @@ class Review extends Model
     public function getCreatedAt(){
         return $this->attributes["created_at"];
     }
-    public function getUpdateAt(){
+    public function getUpdatedAt(){
         return $this->attributes['updated_at'];
     }
     public function getTitle(){
@@ -40,7 +40,7 @@ class Review extends Model
     public function setCreatedAt($createdAt){
         $this->attributes["created_at"] = $createdAt;
     }
-    public function setUpdateAt($updateAt){
+    public function setUpdatedAt($updateAt){
         $this->attributes["updateAt"] = $updateAt;
     }
     public function setTitle($id){
