@@ -66,4 +66,15 @@ class Review extends Model
     public function getUser(){
         return $this->user;
     }
+
+    public function getNumberOfStars() {
+        $rating = $this->getRating();
+        $stars = null;
+
+        for($i=0; $i<$rating; $i++) {
+            $stars = $stars."⭐";
+        }
+
+        return $stars;
+    }
 }
