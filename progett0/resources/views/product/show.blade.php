@@ -55,7 +55,7 @@
 <div class = "card">
     <div class="card-header">
         <h5 class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getUser()->getName()}}</small>
-        <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getRating()}}/5⭐</small> <b><small class="text-muted"> {{$review->getTitle()}}</small></b>
+        <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getNumberOfStars()}}</small> <b><small class="text-muted"> {{$review->getTitle()}}</small></b>
     </div>
             
     <div class="card-body">

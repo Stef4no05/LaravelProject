@@ -10,7 +10,7 @@
             <img src = "{{asset('/storage/'.$product->getImage()) }}" class = "card-img-top img-card">
             <div class = "card-body text-center">
                 <p class="text-start"><b> Numero di recensioni </b> - {{$product->reviews()->count();}}</p>
-                <p class="text-start"><b> Punteggio medio </b> - {{round($product->reviews()->avg('rating'),1)}}/5⭐</p>
+                <p class="text-start"><b> Punteggio medio </b> - {{round($product->reviews()->avg('rating'),1)}}</p>
                 <a href = "{{route('product.show',['id'=>$product["id"]])}}"
                 class = "btn bg-secondary text-white">{{$product->getName()}}</a>
             </div>
