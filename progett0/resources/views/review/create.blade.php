@@ -18,7 +18,7 @@
     <form method="POST" action="{{ route('review.store', ['id' => $viewData['product']->getId()]) }}">
       @csrf
       <div class="row">
-            <label class="col-lg-1 col-md-6 col-form-label">Title:</label>
+            <label class="col-lg-1 col-md-6 col-form-label">Titolo:</label>
             <div class="col-lg-11 col-md-6 col-sm-12">
               <input name="title" value="{{ old('title') }}" type="text" class="form-control">
             </div>
@@ -26,17 +26,17 @@
       <br>
       <div class = "col-auto">
         <div class = "input-group col-auto">
-            <div class = "input-group-text">Rating </div>
+            <div class = "input-group-text">Punteggio </div>
             <input type = "number" min = "1" max = "5" class = "form-comtrol quantity-input" name = "rating" value = "1">
         </div>
       </div>
       <br>
       <div class="form-group">
-        <label for="description">Comment:</label>
+        <label for="description">Commento:</label>
         <textarea name="comment" id="comment" class="form-control" rows="5" required></textarea>
       </div>    
       <br>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Pubblica</button>
     </form>
   </div>
 </div>
