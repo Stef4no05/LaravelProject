@@ -75,7 +75,28 @@ class Product extends Model
     public function reviews(): HasMany{
         return $this->hasMany(Review::class);
     }
-    public function getReview(){
-        return $this->review;
-    }   
+    public function getReviews(){
+        return $this->reviews;
+    }
+    
+    public function getAverageNumberOfStars() {
+        $stars = 0;
+        $nReviews = count($this->reviews);
+
+        foreach ($this->reviews as $review) {
+            $stars += $review->getRating();
+        }
+
+        if ($nReviews > 0) {
+            $averageRating = $stars / $nReviews;
+            $roundedRating = ($averageRating - floor($averageRating) > 0.5) ? ceil($averageRating) : floor($averageRating);
+            $averageStars = null;
+
+            for ($i = 0; $i < $roundedRating; $i++) {
+                $averageStars .= '⭐';
+            }
+
+            return $averageStars;
+        } 
+    }
 }
