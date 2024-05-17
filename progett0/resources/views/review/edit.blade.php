@@ -23,10 +23,21 @@
       </div>
       <br>
       <div class = "col-auto">
-        <div class = "input-group col-auto">
-            <div class = "input-group-text">Punteggio </div>
-            <input type = "number" min = "1" max = "5" class = "form-comtrol quantity-input" name = "rating" value = "{{$viewData['review']->getRating()}}">
-        </div>
+        <label>Punteggio:</label><br>
+        <input type="radio" id="rating1" name="rating" value="1" {{ $viewData['review']->getRating() == '1' ? 'checked' : '' }}>
+        <label for="rating1">⭐</label><br>
+        
+        <input type="radio" id="rating2" name="rating" value="2" {{ $viewData['review']->getRating() == '2' ? 'checked' : '' }}>
+        <label for="rating2">⭐⭐</label><br>
+        
+        <input type="radio" id="rating3" name="rating" value="3" {{ $viewData['review']->getRating() == '3' ? 'checked' : '' }}>
+        <label for="rating3">⭐⭐⭐</label><br>
+        
+        <input type="radio" id="rating4" name="rating" value="4" {{ $viewData['review']->getRating() == '4' ? 'checked' : '' }}>
+        <label for="rating4">⭐⭐⭐⭐</label><br>
+        
+        <input type="radio" id="rating5" name="rating" value="5" {{ $viewData['review']->getRating() == '5' ? 'checked' : '' }}>
+        <label for="rating5">⭐⭐⭐⭐⭐</label><br> 
       </div>
       <br>
       <div class="form-group">

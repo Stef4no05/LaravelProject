@@ -7,7 +7,7 @@
 <br>
 <div class = "card">
     <div class="card-header">
-        <a href= {{route('product.show', ['id' => $review->getProduct()->getId()])}} class="text-secondary"> {{$review->getProduct()->getName()}} </a>
+        <a href= {{route('product.show', ['id' => $review->getProduct()->getId()])}} style="color: #9457EB"> {{$review->getProduct()->getName()}} </a>
         <p class="card-text" style="text-align:left"><small class="text-muted"> {{$review->getNumberOfStars()}}</small> <b><small class="text-muted"> {{$review->getTitle()}}</small></b>
     </div>
             
