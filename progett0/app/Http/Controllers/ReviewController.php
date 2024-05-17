@@ -29,7 +29,7 @@ class ReviewController extends Controller
 
         $viewData = [];
         $viewData['title'] = 'Scrivi una recensione';
-        $viewData['subtitle'] = 'Scrivi una recensione per il '.$product->getName();
+        $viewData['subtitle'] = 'Scrivi una recensione per '.$product->getName();
         $viewData['product'] = $product;
 
         return view('review.create')->with("viewData", $viewData);
